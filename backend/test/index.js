@@ -89,7 +89,7 @@ describe('GET request to "/api/search" endpoint', function() {
             });
         });
 
-        it('getMovies method throw an error when parameters are missing', function() {
+        it('getMovies method throws an error when parameters are missing', function() {
             try {
                 httpClient.fetchOmdbApi.getMovies()
                 .then((data) => {})

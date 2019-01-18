@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import MovieList from 'components/MovieList';
 import debounce from 'lodash/debounce';
+import Select from 'react-select';
 
 import './style.scss';
 
@@ -40,6 +41,34 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
       movies,
     };
 
+    const colourStyles = {
+      control: styles => ({ ...styles, backgroundColor: 'white' }),
+      option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+        const color = chroma(data.color);
+        return {
+          ...styles,
+          backgroundColor: isDisabled
+            ? null
+            : isSelected ? data.color : isFocused ? color.alpha(0.1).css() : null,
+          color: isDisabled
+            ? '#ccc'
+            : isSelected
+              ? chroma.contrast(color, 'white') > 2 ? 'white' : 'black'
+              : data.color,
+          cursor: isDisabled ? 'not-allowed' : 'default',
+        };
+      },
+      input: styles => ({ ...styles, ...dot() }),
+      placeholder: styles => ({ ...styles, ...dot() }),
+      singleValue: (styles, { data }) => ({ ...styles, ...dot(data.color) }),
+    };
+
+    const options = [
+      { value: 'chocolate', label: 'Chocolate' },
+      { value: 'strawberry', label: 'Strawberry' },
+      { value: 'vanilla', label: 'Vanilla' }
+    ]
+
     return (
       <article>
         <Helmet>
@@ -48,7 +77,7 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
         </Helmet>
         <div className="home-page">
           <section className="centered">
-            <h2>Movie Search Box</h2>
+            <h2>Movie Search Boxxxx</h2>
           </section>
           <section className="centered">
             <form onSubmit={this.props.onSubmitForm}>
@@ -64,6 +93,12 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
                 />
               </label>
             </form>
+            <Select
+              defaultValue={options[2]}
+              label="Single select"
+              options={options}
+              styles={colourStyles}
+            />
             <MovieList {...movieListProps} />
           </section>
         </div>
