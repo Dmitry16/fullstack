@@ -7,10 +7,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
-import MovieList from 'components/MovieList';
 import debounce from 'lodash/debounce';
-import Select from 'react-select';
-
+import MovieList from 'components/MovieList';
+import Dropdown from 'components/Dropdown';
 import './style.scss';
 
 export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
@@ -41,23 +40,6 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
       movies,
     };
 
-    const colourStyles = {
-      control: styles => ({ ...styles, backgroundColor: 'white',
-       width: '150px', textOverflow: 'ellipsis',
-       whiteSpace: 'nowrap',
-       overflow: 'hidden',
-     }),
-      input: styles => ({ ...styles }),
-      placeholder: styles => ({ ...styles }),
-      singleValue: (styles, { data }) => ({ ...styles, color: 'steelblue' })
-    };
-
-    const options = [
-      { value: 'chocolate', label: 'Chocolate bla bla bla', color: 'brown' },
-      { value: 'strawberry', label: 'Strawberry bla bla bla', color: 'red' },
-      { value: 'vanilla', label: 'Vanilla bla bla bla', color: 'darkorange' }
-    ]
-
     return (
       <article>
         <Helmet>
@@ -82,12 +64,7 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
                 />
               </label>
             </form>
-            <Select
-              defaultValue={options[2]}
-              label="Single select"
-              options={options}
-              styles={colourStyles}
-            />
+            <Dropdown />
             <MovieList {...movieListProps} />
           </section>
         </div>
