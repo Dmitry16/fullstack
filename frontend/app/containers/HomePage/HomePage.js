@@ -42,31 +42,20 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
     };
 
     const colourStyles = {
-      control: styles => ({ ...styles, backgroundColor: 'white' }),
-      option: (styles, { data, isDisabled, isFocused, isSelected }) => {
-        const color = chroma(data.color);
-        return {
-          ...styles,
-          backgroundColor: isDisabled
-            ? null
-            : isSelected ? data.color : isFocused ? color.alpha(0.1).css() : null,
-          color: isDisabled
-            ? '#ccc'
-            : isSelected
-              ? chroma.contrast(color, 'white') > 2 ? 'white' : 'black'
-              : data.color,
-          cursor: isDisabled ? 'not-allowed' : 'default',
-        };
-      },
-      input: styles => ({ ...styles, ...dot() }),
-      placeholder: styles => ({ ...styles, ...dot() }),
-      singleValue: (styles, { data }) => ({ ...styles, ...dot(data.color) }),
+      control: styles => ({ ...styles, backgroundColor: 'white',
+       width: '150px', textOverflow: 'ellipsis',
+       whiteSpace: 'nowrap',
+       overflow: 'hidden',
+     }),
+      input: styles => ({ ...styles }),
+      placeholder: styles => ({ ...styles }),
+      singleValue: (styles, { data }) => ({ ...styles, color: 'steelblue' })
     };
 
     const options = [
-      { value: 'chocolate', label: 'Chocolate' },
-      { value: 'strawberry', label: 'Strawberry' },
-      { value: 'vanilla', label: 'Vanilla' }
+      { value: 'chocolate', label: 'Chocolate bla bla bla', color: 'brown' },
+      { value: 'strawberry', label: 'Strawberry bla bla bla', color: 'red' },
+      { value: 'vanilla', label: 'Vanilla bla bla bla', color: 'darkorange' }
     ]
 
     return (
@@ -77,7 +66,7 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
         </Helmet>
         <div className="home-page">
           <section className="centered">
-            <h2>Movie Search Boxxxx</h2>
+            <h2>Movie Search Box</h2>
           </section>
           <section className="centered">
             <form onSubmit={this.props.onSubmitForm}>
