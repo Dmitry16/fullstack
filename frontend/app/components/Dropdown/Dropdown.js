@@ -3,7 +3,7 @@ import Select from 'react-select';
 
 class Dropdown extends React.PureComponent {
   render() {
-    const colourStyles = {
+    const customStyles = {
       control: styles => ({ ...styles, backgroundColor: 'white',
        width: '150px', textOverflow: 'ellipsis',
        whiteSpace: 'nowrap',
@@ -25,7 +25,7 @@ class Dropdown extends React.PureComponent {
         defaultValue={options[2]}
         label="Single select"
         options={options}
-        styles={colourStyles}
+        styles={customStyles}
       />
     )
   }
