@@ -15,9 +15,9 @@ class Dropdown extends React.PureComponent {
     };
 
     const options = [
-      { value: 'chocolate', label: 'Chocolate bla bla', color: 'brown' },
-      { value: 'strawberry', label: 'Strawberry bla bla', color: 'red' },
-      { value: 'vanilla', label: 'Vanilla bla bla', color: 'darkorange' }
+      { value: 'chocolate', label: 'Chocolate bla bl', color: 'brown' },
+      { value: 'strawberry', label: 'Strawberry bla bl', color: 'red' },
+      { value: 'vanilla', label: 'Vanilla bla bl', color: 'darkorange' }
     ]
 
     return (
