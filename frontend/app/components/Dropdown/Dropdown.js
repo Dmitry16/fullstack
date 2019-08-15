@@ -4,10 +4,12 @@ import Select from 'react-select';
 class Dropdown extends React.PureComponent {
   render() {
     const customStyles = {
-      control: styles => ({ ...styles, backgroundColor: 'white',
-       width: '150px', textOverflow: 'ellipsis',
-       whiteSpace: 'nowrap',
-       overflow: 'hidden',
+      control: styles => ({ ...styles, 
+        backgroundColor: 'white',
+        width: '150px', textOverflow: 'ellipsis',
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        border: '1px solid red',
      }),
       input: styles => ({ ...styles }),
       placeholder: styles => ({ ...styles }),
